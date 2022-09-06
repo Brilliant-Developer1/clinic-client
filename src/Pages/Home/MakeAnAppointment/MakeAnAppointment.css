@@ -1,0 +1,17 @@
+.makeAnAppointment-section {
+  position: relative;
+  height: 490px;
+  width: 100%;
+}
+
+.makeAnAppointment-section::before {
+  content: '';
+  background-image: url('../../../assets/images/appointment.png');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* opacity: 0.1; */
+}

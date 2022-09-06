@@ -1,0 +1,17 @@
+.header-section {
+  position: relative;
+  height: 838px;
+  width: 100%;
+}
+
+.header-section::before {
+  content: '';
+  background-image: url('../../../assets/images/chair.png');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.1;
+}
