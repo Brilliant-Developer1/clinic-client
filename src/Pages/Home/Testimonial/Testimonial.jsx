@@ -22,7 +22,7 @@ const Testimonial = () => {
           <img src={testimonialImage} alt="testimonialImage" />
         </div>
       </div>
-      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-7 justify-items-center mt-20 lg:mt-44 p-4 lg:p-0">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 gap-7 justify-items-center mt-20 lg:mt-24 p-4 lg:p-0">
         <TestimonialCard
           cardName="Al Mofee"
           company="MN Digital"
