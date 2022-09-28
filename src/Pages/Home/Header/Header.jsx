@@ -4,7 +4,7 @@ import './Header.css';
 
 const Header = () => {
   return (
-    <div className="container mx-auto hero min-h-screen header-section">
+    <div className="container mx-auto hero min-h-screen header-section items-start lg:items-center">
       <div className="hero-content  flex-col lg:flex-row-reverse">
         <div style={{ maxWidth: '541px' }}>
           <img
@@ -13,8 +13,8 @@ const Header = () => {
             alt="chairImage"
           />
         </div>
-        <div>
-          <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
+        <div className="mt-10 lg:mt-0">
+          <h1 className="text-4xl font-bold">Your New Smile Starts Here</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et

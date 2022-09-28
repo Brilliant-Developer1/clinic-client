@@ -20,7 +20,7 @@ const MakeAnAppointment = () => {
             style={{ maxWidth: '515px', maxHeight: '576px' }}
             className="p-0 lg:p-8 text-base-100"
           >
-            <h1 className="  text-xl font-bold text-primary">OUR SERVICES</h1>
+            <h1 className="  text-xl font-bold text-primary">APPOINTMENT</h1>
             <h1 className="text-3xl ">Make an appointment Today</h1>
             <p className="py-6">
               It is a long established fact that a reader will be distracted by

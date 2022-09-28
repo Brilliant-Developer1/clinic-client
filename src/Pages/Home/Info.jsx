@@ -15,13 +15,13 @@ const Info = () => {
       />
       <InfoCard
         cardTitle="Visit our location"
-        cardText="Savannah, GA. 31856"
+        cardText="Motijheel Dhaka-1230"
         img={marker}
         background="bg-gray-700"
       />
       <InfoCard
         cardTitle="Contact us now"
-        cardText={<a href="tel:(912) 897-3964">(912) 897-3964</a>}
+        cardText={<a href="tel:01830868686">018-30868686</a>}
         img={phone}
         background="bg-gradient-to-r from-primary to-accent"
       />

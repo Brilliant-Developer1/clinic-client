@@ -9,7 +9,7 @@ const TestimonialCard = ({ img, cardText, cardName, company }) => {
 
           <div className="card-actions justify-start items-center mt-5">
             <div className="avatar">
-              <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <div className="w-16 lg:w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src={img} alt="peopleImage" />
               </div>
             </div>
