@@ -1,0 +1,10 @@
+.react-calendar {
+  width: 100%;
+  max-width: 350px;
+}
+
+@media screen and (max-width: 288px) {
+  .react-calendar {
+    display: none;
+  }
+}

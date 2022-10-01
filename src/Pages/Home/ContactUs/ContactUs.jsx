@@ -11,7 +11,7 @@ const ContactUs = () => {
         backgroundImage: `url(${background})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        height: 550,
+        minHeight: 550,
         width: '100%',
       }}
     >
@@ -41,7 +41,7 @@ const ContactUs = () => {
           </div>
           <button
             type="button"
-            className="btn w-32 border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md mt-8
+            className="btn w-32 border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md mt-8 mb-5
    "
           >
             Submit
