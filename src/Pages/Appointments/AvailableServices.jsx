@@ -23,7 +23,7 @@ const AvailableServices = () => {
 
       <div className="mt-16">
         <h2 className="text-primary text-xl">
-          Available slots for Teeth Orthodontics.
+          Available slots Teeth Orthodontics.
         </h2>
       </div>
     </div>
