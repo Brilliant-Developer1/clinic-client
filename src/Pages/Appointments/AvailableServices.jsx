@@ -1,5 +1,6 @@
 import React from 'react';
 import AvailableServicesCard from './AvailableServicesCard';
+import AvailableSlotsCard from './AvailableSlotsCard';
 
 const AvailableServices = () => {
   return (
@@ -23,7 +24,34 @@ const AvailableServices = () => {
 
       <div className="mt-16">
         <h2 className="text-primary text-xl">
-          Available slots Teeth Orthodontics.
+          <div>
+            <h2 className=" text-center text-xl text-primary">
+              Available slots for Teeth Orthodontics.
+            </h2>
+
+            <div className="p-2 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:max-w-screen-xl md:max-w-screen-sm mt-5">
+              <AvailableSlotsCard
+                cardTitle="Teeth Orthodontics"
+                time="8:00 AM - 9:00 AM"
+              />
+              <AvailableSlotsCard
+                cardTitle="Cosmetic Dentistry"
+                time="9:00 AM - 10:00 AM"
+              />
+              <AvailableSlotsCard
+                cardTitle="Teeth Cleaning"
+                time="11:00 AM - 12:00 AM"
+              />
+              <AvailableSlotsCard
+                cardTitle="Teeth Orthodontics"
+                time="5:00 PM - 6:00 PM"
+              />
+              <AvailableSlotsCard
+                cardTitle="Cosmetic Dentistry"
+                time="7:00 PM - 8:00 PM"
+              />
+            </div>
+          </div>
         </h2>
       </div>
     </div>
