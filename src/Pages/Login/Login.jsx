@@ -1,18 +1,9 @@
 import React from 'react';
 
 const Login = () => {
-  const loginStyle = {
-    width: '500px',
-    height: '500px',
-
-    position: 'absolute',
-
-    marginLeft: '-250px',
-    marginTop: '-250px',
-  };
   return (
-    <div style={loginStyle} className=" top-2/4 left-2/4">
-      <div className="flex">
+    <div className=" container mx-auto">
+      <div className="flex items-center justify-center mt-28 lg:mt-36">
         <div className="card w-96 bg-base-100 shadow-xl">
           <figure>
             <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
