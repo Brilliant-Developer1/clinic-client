@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Components/Footer/Footer';
 
 import '../Home/Header/Header.css';
 import AppointmentsHeader from './AppointmentsHeader';
@@ -9,6 +10,7 @@ const Appointments = () => {
     <div>
       <AppointmentsHeader />
       <AvailableServices />
+      <Footer />
     </div>
   );
 };

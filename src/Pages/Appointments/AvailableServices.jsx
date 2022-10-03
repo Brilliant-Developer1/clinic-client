@@ -22,7 +22,7 @@ const AvailableServices = () => {
         </div>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-16 mb-16">
         <h2 className="text-primary text-xl">
           <div>
             <h2 className=" text-center text-xl text-primary">
