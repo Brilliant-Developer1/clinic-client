@@ -9,7 +9,7 @@ import SignUp from './Pages/SignUp/SignUp';
 
 function App() {
   return (
-    <div>
+    <main>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="login/signup" element={<SignUp />} />
       </Routes>
-    </div>
+    </main>
   );
 }
 
