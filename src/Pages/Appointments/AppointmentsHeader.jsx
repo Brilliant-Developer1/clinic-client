@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Calendar } from 'react-calendar';
 import chair from '../../assets/images/chair.png';
-import 'react-calendar/dist/Calendar.css';
 import './AppointmentsHeader.css';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+import { format } from 'date-fns';
 
 const AppointmentsHeader = () => {
   const [date, setDate] = useState(new Date());
@@ -17,12 +18,16 @@ const AppointmentsHeader = () => {
             alt="chairImage"
           />
         </div>
-        <div className="mt-10 lg:mt-0 flex justify-center">
-          <Calendar
-            className="rounded-2xl shadow-xl"
-            onChange={setDate}
-            value={date}
+        <div className="mt-10 lg:mt-0 flex justify-center flex-col items-center">
+          <DayPicker
+            className="rounded-2xl shadow-xl p-5 bg-white"
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            showOutsideDays
+            fixedWeeks
           />
+          <p>Your Selected Date is: {format(date, 'PP')}</p>
         </div>
       </div>
     </div>
