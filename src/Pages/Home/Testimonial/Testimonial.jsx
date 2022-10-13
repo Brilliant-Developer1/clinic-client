@@ -7,6 +7,32 @@ import people2 from '../../../assets/images/people2.png';
 import people3 from '../../../assets/images/people3.png';
 
 const Testimonial = () => {
+  const comments = [
+    {
+      _id: 1,
+      cardName: 'Al Mofee',
+      company: 'MN Digital',
+      cardText:
+        'Dr. Smith is an excellent doctor, I would highly recommend him to anyone. He takes time to answer all your questions, and he always makes sure you understand what is going on and what your options are.',
+      img: people1,
+    },
+    {
+      _id: 2,
+      cardName: 'Saymen',
+      company: 'Square Medicine',
+      cardText:
+        'I was feeling a little under the weather, so I made an appointment with my doctor. I was a little nervous, but they did everything they could to put me at ease and make the experience as comfortable as possible.',
+      img: people2,
+    },
+    {
+      _id: 3,
+      cardName: 'James',
+      company: 'Business Man',
+      cardText:
+        ' have been seeing Dr. Ismail for over 3 years and would not see anyone else. I have been to multiple doctors and no one has had the knowledge and treatment skills that Dr. Ismail has. She is the absolute best!',
+      img: people3,
+    },
+  ];
   return (
     <div className=" container mx-auto mt-20 testimonial-section">
       <div className="pl-4 flex  justify-between">
@@ -23,30 +49,12 @@ const Testimonial = () => {
         </div>
       </div>
       <div className=" grid grid-cols-1 lg:grid-cols-3 gap-7 justify-items-center mt-20 lg:mt-24 p-4 lg:p-0">
-        <TestimonialCard
-          cardName="Al Mofee"
-          company="MN Digital"
-          cardText="It is a long established fact that by the readable content of a lot
-        layout. The point of using Lorem a more-or-less normal distribu to
-        using Content here, content"
-          img={people1}
-        />
-        <TestimonialCard
-          cardName="Alexa"
-          company="Brilliant-Developer"
-          cardText="It is a long established fact that by the readable content of a lot
-        layout. The point of using Lorem a more-or-less normal distribu to
-        using Content here, content"
-          img={people2}
-        />
-        <TestimonialCard
-          cardName="Ruby Rai"
-          company="Square"
-          cardText="It is a long established fact that by the readable content of a lot
-        layout. The point of using Lorem a more-or-less normal distribu to
-        using Content here, content"
-          img={people3}
-        />
+        {comments.map(comment => (
+          <TestimonialCard
+            key={comment._id}
+            comment={comment}
+          ></TestimonialCard>
+        ))}
       </div>
     </div>
   );
