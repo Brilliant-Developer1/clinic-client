@@ -6,31 +6,40 @@ import cavity from '../../../assets/images/cavity.png';
 import whitening from '../../../assets/images/whitening.png';
 
 const Services = () => {
+  const services = [
+    {
+      _id: 1,
+      cardTitle: 'Fluoride Treatment',
+      cardText:
+        'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the',
+      img: fluoride,
+    },
+    {
+      _id: 2,
+      cardTitle: 'Cavity Filling',
+      cardText:
+        'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the',
+      img: cavity,
+    },
+    {
+      _id: 3,
+      cardTitle: 'Teeth Whitening',
+      cardText:
+        'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the',
+      img: whitening,
+    },
+  ];
   return (
-    <div className="container mx-auto flex justify-center flex-col items-center mt-16 lg:mt-28">
+    <section className="container mx-auto flex justify-center flex-col items-center mt-16 lg:mt-28">
       <div>
         <h2 className=" text-center text-xl font-bold text-primary">
           OUR SERVICES
         </h2>
         <h4 className=" text-center text-3xl  ">Services We Provide</h4>
         <div className="p-2 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:max-w-screen-xl md:max-w-screen-sm">
-          <ServicesCard
-            cardTitle="Fluoride Treatment"
-            cardText="Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"
-            img={fluoride}
-          />
-
-          <ServicesCard
-            cardTitle="Cavity Filling"
-            cardText="Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"
-            img={cavity}
-          />
-
-          <ServicesCard
-            cardTitle="Teeth Whitening"
-            cardText="Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the"
-            img={whitening}
-          />
+          {services.map(service => (
+            <ServicesCard key={service._id} service={service}></ServicesCard>
+          ))}
         </div>
       </div>
 
@@ -65,7 +74,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

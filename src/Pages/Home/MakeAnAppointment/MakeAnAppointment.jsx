@@ -4,7 +4,7 @@ import doctorSmall from '../../../assets/images/doctor-small.png';
 
 const MakeAnAppointment = () => {
   return (
-    <div className="makeAnAppointment-section flex justify-center  items-center mt-24 lg:mt-36">
+    <section className="makeAnAppointment-section flex justify-center  items-center mt-24 lg:mt-36">
       <div className=" hero mx-auto flex justify-center  items-center ">
         <div className="hero-content  flex-col lg:flex-row items-center">
           <div
@@ -40,7 +40,7 @@ const MakeAnAppointment = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
