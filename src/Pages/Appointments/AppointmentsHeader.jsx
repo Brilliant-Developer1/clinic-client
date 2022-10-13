@@ -5,7 +5,8 @@ import 'react-calendar/dist/Calendar.css';
 import './AppointmentsHeader.css';
 
 const AppointmentsHeader = () => {
-  const [value, onChange] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+
   return (
     <div className="container mx-auto hero min-h-screen header-section items-start lg:items-center">
       <div className="hero-content  flex-col lg:flex-row-reverse w-full justify-around">
@@ -19,8 +20,8 @@ const AppointmentsHeader = () => {
         <div className="mt-10 lg:mt-0 flex justify-center">
           <Calendar
             className="rounded-2xl shadow-xl"
-            onChange={onChange}
-            value={value}
+            onChange={setDate}
+            value={date}
           />
         </div>
       </div>

@@ -31,16 +31,18 @@ const AvailableSlotsCard = ({ cardTitle, time }) => {
             </label>
             <h3 className="text-lg font-bold">{cardTitle}</h3>
 
-            <div className="flex flex-col w-full items-center">
+            <form className="flex flex-col w-full items-center">
               <input
                 type="text"
                 className="input input-bordered  bg-gray-200 mt-8 inputs"
                 value="April 30, 2020"
+                readOnly
               />
               <input
                 type="text"
                 className="input input-bordered bg-gray-200 mt-3 inputs"
                 value={time}
+                readOnly
               />
               <input
                 type="text"
@@ -65,7 +67,7 @@ const AvailableSlotsCard = ({ cardTitle, time }) => {
               >
                 Submit
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </div>
