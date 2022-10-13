@@ -4,6 +4,7 @@ import ServicesCard from './ServicesCard';
 import fluoride from '../../../assets/images/fluoride.png';
 import cavity from '../../../assets/images/cavity.png';
 import whitening from '../../../assets/images/whitening.png';
+import MainButton from '../../Components/MainButton/MainButton';
 
 const Services = () => {
   const services = [
@@ -64,13 +65,7 @@ const Services = () => {
               here', making it look like readable English. Many desktop
               publishing packages and web page
             </p>
-            <button
-              type="button"
-              className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md 
-           "
-            >
-              Get Started
-            </button>
+            <MainButton>Get Started</MainButton>
           </div>
         </div>
       </div>

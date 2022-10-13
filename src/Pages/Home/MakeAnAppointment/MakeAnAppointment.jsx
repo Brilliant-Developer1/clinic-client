@@ -1,6 +1,7 @@
 import React from 'react';
 import './MakeAnAppointment.css';
 import doctorSmall from '../../../assets/images/doctor-small.png';
+import MainButton from '../../Components/MainButton/MainButton';
 
 const MakeAnAppointment = () => {
   return (
@@ -30,13 +31,7 @@ const MakeAnAppointment = () => {
               here', making it look like readable English. Many desktop
               publishing packages and web page
             </p>
-            <button
-              type="button"
-              className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md 
-           "
-            >
-              Get Started
-            </button>
+            <MainButton>Make Appointment</MainButton>
           </div>
         </div>
       </div>

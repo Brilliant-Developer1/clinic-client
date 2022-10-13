@@ -2,6 +2,7 @@ import React from 'react';
 import './ContactUs.css';
 
 import background from '../../../assets/images/appointment.png';
+import MainButton from '../../Components/MainButton/MainButton';
 
 const ContactUs = () => {
   return (
@@ -39,13 +40,9 @@ const ContactUs = () => {
               placeholder="Your message"
             ></textarea>
           </div>
-          <button
-            type="button"
-            className="btn w-32 border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md mt-8 mb-5
-   "
-          >
-            Submit
-          </button>
+          <div className="mt-8 mb-5">
+            <MainButton>&nbsp; &nbsp; Submit &nbsp; &nbsp;</MainButton>
+          </div>
         </div>
       </div>
     </div>

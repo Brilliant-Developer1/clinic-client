@@ -1,5 +1,6 @@
 import React from 'react';
 import chair from '../../../assets/images/chair.png';
+import MainButton from '../../Components/MainButton/MainButton';
 import './Header.css';
 
 const Header = () => {
@@ -20,13 +21,7 @@ const Header = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button
-            type="button"
-            className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md 
-             "
-          >
-            Get Started
-          </button>
+          <MainButton>Get Started</MainButton>
         </div>
       </div>
     </div>
