@@ -3,7 +3,6 @@ import chair from '../../assets/images/chair.png';
 import './AppointmentsHeader.css';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
-import { format } from 'date-fns';
 
 const AppointmentsHeader = ({ date, setDate }) => {
   return (
@@ -25,7 +24,6 @@ const AppointmentsHeader = ({ date, setDate }) => {
             showOutsideDays
             fixedWeeks
           />
-          <p>Your Selected Date is: {format(date, 'PP')}</p>
         </div>
       </div>
     </div>

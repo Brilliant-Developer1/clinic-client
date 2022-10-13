@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { format } from 'date-fns';
+import { useEffect } from 'react';
 
-const AvailableSlotsCard = ({ cardTitle, time }) => {
+const AvailableSlotsCard = ({ availableslot, date }) => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    fetch('services.json')
+      .then(res => res.json())
+      .then(data => setServices(data));
+  }, []);
   return (
     <div>
       <div className="card drop-shadow-md hover:drop-shadow-xl bg-base-100 shadow-md pt-2 pb-2 pr-0 lg:pr-12 xl:pr-28 pl-0 lg:pl-12 xl:pl-28">
         <div className="pt-5 pb-5 lg:pr-0 pr-2 lg:pl-0 pl-2 ">
           <div className="card-actions flex flex-col items-center">
-            <h2 className="card-title text-primary">{cardTitle}</h2>
-            <p className="text-black">{time}</p>
+            <h2 className="card-title text-primary">
+              {availableslot.cardTitle}
+            </h2>
+            <p className="text-black">{availableslot.time}</p>
             <div className="mt-5 lg:mt-10 mb-0 lg:mb-5">
               <label
                 htmlFor="my-modal-3"
@@ -29,19 +40,19 @@ const AvailableSlotsCard = ({ cardTitle, time }) => {
             >
               ✕
             </label>
-            <h3 className="text-lg font-bold">{cardTitle}</h3>
+            <h3 className="text-lg font-bold">{availableslot.cardTitle}</h3>
 
             <form className="flex flex-col w-full items-center">
               <input
                 type="text"
                 className="input input-bordered  bg-gray-200 mt-8 inputs"
-                value="April 30, 2020"
+                value={format(date, 'PP')}
                 readOnly
               />
               <input
                 type="text"
                 className="input input-bordered bg-gray-200 mt-3 inputs"
-                value={time}
+                value={availableslot.time}
                 readOnly
               />
               <input
