@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import chair from '../../assets/images/chair.png';
 import './AppointmentsHeader.css';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 
-const AppointmentsHeader = () => {
-  const [date, setDate] = useState(new Date());
-
+const AppointmentsHeader = ({ date, setDate }) => {
   return (
     <div className="container mx-auto hero min-h-screen header-section items-start lg:items-center">
       <div className="hero-content  flex-col lg:flex-row-reverse w-full justify-around">

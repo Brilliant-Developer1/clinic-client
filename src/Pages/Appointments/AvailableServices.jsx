@@ -1,13 +1,14 @@
 import React from 'react';
 import AvailableServicesCard from './AvailableServicesCard';
 import AvailableSlotsCard from './AvailableSlotsCard';
+import { format } from 'date-fns';
 
-const AvailableServices = () => {
+const AvailableServices = ({ date }) => {
   return (
     <div className="container mx-auto flex justify-center flex-col items-center mt-16 lg:mt-28">
       <div>
         <h2 className=" text-center text-xl text-primary">
-          Available Services on April 30, 2022
+          Available Services on {format(date, 'PP')}
         </h2>
         <p className=" text-center text-slate-400  ">
           Please select a service.
