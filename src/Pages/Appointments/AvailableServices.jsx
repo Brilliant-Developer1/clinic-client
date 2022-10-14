@@ -26,33 +26,7 @@ const AvailableServices = ({ date }) => {
     { _id: 5, cardTitle: 'Cosmetic Dentistry' },
     { _id: 6, cardTitle: 'Teeth Cleaning' },
   ];
-  const availableslots = [
-    {
-      _id: 1,
-      cardTitle: 'Teeth Orthodontics',
-      time: '8:00 AM - 9:00 AM',
-    },
-    {
-      _id: 2,
-      cardTitle: 'Cosmetic Dentistry',
-      time: '9:00 AM - 10:00 AM',
-    },
-    {
-      _id: 3,
-      cardTitle: 'Teeth Cleaning',
-      time: '11:00 AM - 12:00 AM',
-    },
-    {
-      _id: 4,
-      cardTitle: 'Teeth Orthodontics',
-      time: '5:00 PM - 6:00 PM',
-    },
-    {
-      _id: 5,
-      cardTitle: 'Cosmetic Dentistry',
-      time: '7:00 PM - 8:00 PM',
-    },
-  ];
+
   return (
     <section className="container mx-auto flex justify-center flex-col items-center mt-16 lg:mt-28">
       <div>
