@@ -4,7 +4,12 @@ import { format } from 'date-fns';
 const AvailableSlotsCard = ({ availableservice, date }) => {
   const { name, slots } = availableservice;
   const [treatment, setTreatment] = useState(null);
-  console.log(treatment);
+  const handleBooking = event => {
+    event.preventDefault();
+    const slot = event.target.slot.value;
+    console.log(slot);
+    setTreatment(null);
+  };
   return (
     <div>
       <div className="card drop-shadow-md hover:drop-shadow-xl bg-base-100 shadow-md pt-2 pb-2 pr-0 lg:pr-12 xl:pr-28 pl-0 lg:pl-12 xl:pl-28">
@@ -49,42 +54,52 @@ const AvailableSlotsCard = ({ availableservice, date }) => {
               </label>
               <h3 className="text-lg font-bold">{treatment.name}</h3>
 
-              <form className="flex flex-col w-full items-center">
+              <form
+                onSubmit={handleBooking}
+                className="flex flex-col w-full items-center"
+              >
                 <input
                   type="text"
                   className="input input-bordered  bg-gray-200 mt-8 inputs"
                   value={format(date, 'PP')}
                   readOnly
                 />
-                <input
-                  type="text"
-                  className="input input-bordered bg-gray-200 mt-3 inputs"
-                  value={treatment.slots[0]}
-                  readOnly
-                />
+
+                <select
+                  name="slot"
+                  className="select select-info w-full max-w-md mt-3"
+                >
+                  {slots.map(slot => (
+                    <option key={slot} value={slot}>
+                      {slot}
+                    </option>
+                  ))}
+                </select>
                 <input
                   type="text"
                   placeholder="Full Name"
+                  name="name"
                   className="input input-bordered input-accent   mt-5 inputs"
                 />
                 <input
                   type="number"
                   placeholder="Phone Number"
+                  name="phone"
                   className="input input-bordered input-accent   mt-3 inputs"
                 />
                 <input
                   type="email"
                   placeholder="Email Address"
+                  name="email"
                   className="input input-bordered input-accent mt-3 inputs"
                 />
 
-                <button
-                  type="button"
+                <input
+                  type="submit"
+                  value="Submit"
                   className="btn w-full border-none bg-gray-600 text-base-100  hover:bg-gray-500 shadow-lg hover:shadow-md mt-8 mb-5
    "
-                >
-                  Submit
-                </button>
+                />
               </form>
             </div>
           </div>
