@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { format } from 'date-fns';
-import { useEffect } from 'react';
 
-const AvailableSlotsCard = ({ availableslot, date }) => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    fetch('services.json')
-      .then(res => res.json())
-      .then(data => setServices(data));
-  }, []);
+const AvailableSlotsCard = ({ availableservice, date }) => {
+  const { name, slots } = availableservice;
   return (
     <div>
       <div className="card drop-shadow-md hover:drop-shadow-xl bg-base-100 shadow-md pt-2 pb-2 pr-0 lg:pr-12 xl:pr-28 pl-0 lg:pl-12 xl:pl-28">
         <div className="pt-5 pb-5 lg:pr-0 pr-2 lg:pl-0 pl-2 ">
           <div className="card-actions flex flex-col items-center">
-            <h2 className="card-title text-primary">
-              {availableslot.cardTitle}
-            </h2>
-            <p className="text-black">{availableslot.time}</p>
+            <h2 className="card-title text-primary">{name}</h2>
+            <p className="text-black">
+              {slots.length > 0 ? (
+                <span>{slots[0]}</span>
+              ) : (
+                <span className="text-red-500">No slots Available</span>
+              )}
+            </p>
+            <p className="text-black">
+              {slots.length} {slots.length > 1 ? 'spaces' : 'space'} available
+            </p>
             <div className="mt-5 lg:mt-10 mb-0 lg:mb-5">
               <label
-                htmlFor="my-modal-3"
+                htmlFor="my-modal-6"
                 className="btn modal-button border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl shadow-lg hover:shadow-md"
               >
                 Book Appointment
@@ -31,16 +31,16 @@ const AvailableSlotsCard = ({ availableslot, date }) => {
         </div>
       </div>
       <div className="text-black">
-        <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box relative">
             <label
-              htmlFor="my-modal-3"
+              htmlFor="my-modal-6"
               className="btn btn-sm btn-circle absolute right-2 top-2"
             >
               ✕
             </label>
-            <h3 className="text-lg font-bold">{availableslot.cardTitle}</h3>
+            <h3 className="text-lg font-bold">{name}</h3>
 
             <form className="flex flex-col w-full items-center">
               <input
@@ -52,7 +52,7 @@ const AvailableSlotsCard = ({ availableslot, date }) => {
               <input
                 type="text"
                 className="input input-bordered bg-gray-200 mt-3 inputs"
-                value={availableslot.time}
+                value="123456"
                 readOnly
               />
               <input

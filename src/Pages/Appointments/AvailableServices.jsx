@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AvailableServicesCard from './AvailableServicesCard';
 import AvailableSlotsCard from './AvailableSlotsCard';
 import { format } from 'date-fns';
 
 const AvailableServices = ({ date }) => {
+  const [availableservices, setavailableservices] = useState([]);
+
+  useEffect(() => {
+    fetch('services.json')
+      .then(res => res.json())
+      .then(data => setavailableservices(data));
+  }, []);
+
   const services = [
     {
       _id: 1,
@@ -72,10 +80,10 @@ const AvailableServices = ({ date }) => {
             </h2>
 
             <div className="p-2 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:max-w-screen-xl md:max-w-screen-sm mt-5">
-              {availableslots.map(availableslot => (
+              {availableservices.map(availableservice => (
                 <AvailableSlotsCard
-                  key={availableslot._id}
-                  availableslot={availableslot}
+                  key={availableservice._id}
+                  availableservice={availableservice}
                   date={date}
                 ></AvailableSlotsCard>
               ))}
