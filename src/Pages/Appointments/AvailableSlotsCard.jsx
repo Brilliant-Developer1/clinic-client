@@ -7,7 +7,7 @@ const AvailableSlotsCard = ({ availableservice, date }) => {
   const handleBooking = event => {
     event.preventDefault();
     const slot = event.target.slot.value;
-    console.log(slot);
+
     setTreatment(null);
   };
   return (
@@ -23,7 +23,7 @@ const AvailableSlotsCard = ({ availableservice, date }) => {
                 <span className="text-red-500">No slots Available</span>
               )}
             </p>
-            <p className="text-black">
+            <p className="text-black text-md">
               {slots.length} {slots.length > 1 ? 'spaces' : 'space'} available
             </p>
             <div className="mt-5 lg:mt-10 mb-0 lg:mb-5">
