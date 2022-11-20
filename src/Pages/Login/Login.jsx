@@ -28,20 +28,50 @@ const Login = () => {
             <h1 className="text-2xl text-center">Login</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
               <input
-                {...register('email', { pattern: /[A-Za-z]{3}/ })}
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: 'Email is required',
+                  },
+                  pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                    message: 'Please Provide a valid Email',
+                  },
+                })}
                 type="email"
                 placeholder="Email Address"
                 className="input input-bordered input-accent mt-3 inputs"
               />
-              {errors.email?.type === 'required' && 'Email is required'}
+              {errors.email?.type === 'required' && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
+              {errors.email?.type === 'pattern' && (
+                <span className="text-red-500">{errors.email.message}</span>
+              )}
 
               <input
                 autoComplete="password"
                 type="password"
                 placeholder="Password"
                 className="input input-bordered input-accent   mt-3 inputs"
+                {...register('password', {
+                  required: {
+                    value: true,
+                    message: 'Password is required',
+                  },
+                  minLength: {
+                    value: 6,
+                    message: 'Minimum 6 Characters',
+                  },
+                })}
               />
-              {errors.password?.type === 'required' && 'Password is required'}
+              {errors.password?.type === 'required' && (
+                <span className="text-red-500">{errors.password.message}</span>
+              )}
+              {errors.password?.type === 'minLength' && (
+                <span className="text-red-500">{errors.password.message}</span>
+              )}
+
               <a
                 href="http://localhost:3000/login"
                 className="text-left hover:text-cyan-500"
