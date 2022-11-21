@@ -15,6 +15,8 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+    //to collect data from form name, email, password etc.
   const {
     register,
     formState: { errors },
@@ -111,7 +113,7 @@ const Login = () => {
 
             <p className="text-center">
               New to Doctors Portal?{' '}
-              <Link to="signup" className="text-accent hover:text-cyan-500">
+              <Link to="/signup" className="text-accent hover:text-cyan-500">
                 Create new account
               </Link>
             </p>
