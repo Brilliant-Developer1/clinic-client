@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import googleIcon from '../../assets/icons/google.png';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import {
+  useSignInWithGoogle,
+  useSignInWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
   const {
     register,
     formState: { errors },
@@ -14,10 +21,11 @@ const Login = () => {
   } = useForm();
   const onSubmit = data => {
     console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
   };
 
-  if (user) {
-    console.log(user);
+  if (googleUser) {
+    console.log(googleUser);
   }
 
   return (
