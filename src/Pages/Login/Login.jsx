@@ -7,6 +7,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
+import Loading from '../Components/Loading/Loading';
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -24,8 +25,20 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
 
-  if (googleUser) {
-    console.log(googleUser);
+  let signInError;
+
+  if (loading || googleLoading) {
+    return <Loading />;
+  }
+
+  if (error || googleError) {
+    signInError = (
+      <p className="text-red-500">{error?.message || googleError?.message}</p>
+    );
+  }
+
+  if (user || googleUser) {
+    console.log(user || googleUser);
   }
 
   return (
@@ -86,6 +99,8 @@ const Login = () => {
               >
                 Forgot Password?
               </a>
+
+              {signInError}
               <input
                 type="submit"
                 value="LOGIN"
@@ -110,7 +125,7 @@ const Login = () => {
               CONTINUE WITH GOOGLE
               <div className="avatar ml-2">
                 <div className="w-6 rounded-full">
-                  <img src={googleIcon} />
+                  <img src={googleIcon} alt="icon" />
                 </div>
               </div>
             </button>
