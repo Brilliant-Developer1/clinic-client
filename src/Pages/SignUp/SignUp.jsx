@@ -1,9 +1,10 @@
 import React from 'react';
 import googleIcon from '../../assets/icons/google.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   useSignInWithGoogle,
   useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
 } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
@@ -20,32 +21,42 @@ const SignUp = () => {
       loading,
       error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    // Insert User Name in Data
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const navigate = useNavigate();
     //to collect data from form name, email, password etc.
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = data => {
-    console.log(data);
-    createUserWithEmailAndPassword(data.email, data.password);
-  };
+  
 
   let signInError;
 
-  if (loading || googleLoading) {
+  if (loading || googleLoading || updating) {
     return <Loading />;
   }
 
-  if (error || googleError) {
+  if (error || googleError || updateError) {
     signInError = (
-      <p className="text-red-500">{error?.message || googleError?.message}</p>
+      <p className="text-red-500">{error?.message || googleError?.message || updateError?.message}</p>
     );
   }
 
   if (user || googleUser) {
     console.log(user || googleUser);
   }
+
+  const onSubmit = async data => {
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name })
+    console.log("Update done");
+    navigate('/appointments')
+  };
   return (
     <div className=" container mx-auto">
       <div className="flex items-center justify-center mt-28 lg:mt-36">
