@@ -1,7 +1,24 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from './../../../firebase.init';
+
+
+
 
 const Navbar = () => {
+
+  const [user] = useAuthState(auth);
+  
+
+  const logOut = async () => {
+    const success = await signOut(auth);
+          if (success) {
+            alert('You are sign out');
+          }
+  }
+  
   const menuItems = (
     <>
       <li>
@@ -34,9 +51,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl hover:shadow-md shadow-lg">
+        { user ?
+            <button onClick={logOut} className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl hover:shadow-md shadow-lg">
+           Sign Out
+          </button>
+          :
+          <button className="btn border-none bg-gradient-to-r from-primary to-accent text-base-100 hover:text-black hover:bg-gradient-to-bl hover:shadow-md shadow-lg">
           <Link to="login">Log In</Link>
         </button>
+        }
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
             <svg

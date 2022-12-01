@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import googleIcon from '../../assets/icons/google.png';
 import {
   useSignInWithGoogle,
@@ -16,6 +16,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
+    const navigate = useNavigate();
     //to collect data from form name, email, password etc.
   const {
     register,
@@ -25,6 +26,7 @@ const Login = () => {
   const onSubmit = data => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
+    navigate('/appointments')
   };
 
   let signInError;
