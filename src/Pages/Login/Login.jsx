@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import googleIcon from '../../assets/icons/google.png';
 import {
   useSignInWithGoogle,
@@ -15,8 +15,11 @@ const Login = () => {
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-
+    // collected the location data from RequireAuth then redirect the user where he came from.
     const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/"; // if user came from home page back to there
+
     //to collect data from form name, email, password etc.
   const {
     register,
@@ -26,7 +29,7 @@ const Login = () => {
   const onSubmit = data => {
     console.log(data);
     signInWithEmailAndPassword(data.email, data.password);
-    navigate('/appointments')
+    
   };
 
   let signInError;
@@ -42,7 +45,7 @@ const Login = () => {
   }
 
   if (user || googleUser) {
-    console.log(user || googleUser);
+    navigate(from, { replace: true });
   }
 
   return (
