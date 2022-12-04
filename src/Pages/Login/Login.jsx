@@ -27,12 +27,19 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = data => {
-    console.log(data);
+    
     signInWithEmailAndPassword(data.email, data.password);
     
   };
 
   let signInError;
+
+  React.useEffect(() => {
+    if (user || googleUser) {
+      navigate(from, { replace: true });
+    }
+  }, [user, googleUser, navigate, from])
+  
 
   if (loading || googleLoading) {
     return <Loading />;
@@ -44,9 +51,7 @@ const Login = () => {
     );
   }
 
-  if (user || googleUser) {
-    navigate(from, { replace: true });
-  }
+  
 
   return (
     <div className=" container mx-auto">

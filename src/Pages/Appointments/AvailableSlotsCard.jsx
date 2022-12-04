@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AvailableSlotsCard = ({ availableservice, date }) => {
+  const [user] = useAuthState(auth);
   const { name, slots } = availableservice;
   const [treatment, setTreatment] = useState(null);
   const handleBooking = event => {
+    
     event.preventDefault();
-    const slot = event.target.slot.value;
+    //const slot = event.target.slot.value;
 
     setTreatment(null);
   };
@@ -69,29 +73,31 @@ const AvailableSlotsCard = ({ availableservice, date }) => {
                   name="slot"
                   className="select select-info w-full max-w-md mt-3"
                 >
-                  {slots.map(slot => (
-                    <option key={slot} value={slot}>
+                  {slots.map((slot, index) => (
+                    <option key={index} value={slot}>
                       {slot}
                     </option>
                   ))}
                 </select>
                 <input
                   type="text"
-                  placeholder="Full Name"
+                  disabled
+                  value={user?.displayName || ''}
                   name="name"
                   className="input input-bordered input-accent   mt-5 inputs"
+                />
+                <input
+                  type="email"
+                  disabled
+                  value={user?.email || ''}
+                  name="email"
+                  className="input input-bordered input-accent mt-3 inputs"
                 />
                 <input
                   type="number"
                   placeholder="Phone Number"
                   name="phone"
                   className="input input-bordered input-accent   mt-3 inputs"
-                />
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  name="email"
-                  className="input input-bordered input-accent mt-3 inputs"
                 />
 
                 <input
