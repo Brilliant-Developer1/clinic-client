@@ -7,6 +7,7 @@ import Appointments from './Pages/Appointments/Appointments';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import RequireAuth from './Pages/Functions/RequireAuth';
+import ForgorPassword from './Pages/Login/ForgorPassword';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         />
 
         <Route path="login" element={<Login />} />
+        <Route path="forgot-password" element={<ForgorPassword />} />
         <Route path="signup" element={<SignUp />} />
       </Routes>
     </main>

@@ -9,8 +9,8 @@ import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../Components/Loading/Loading';
 
-const Login = () => {
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+const ForgorPassword = () => {
+    const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -28,7 +28,7 @@ const Login = () => {
   } = useForm();
   const onSubmit = data => {
     
-    signInWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data.email);
     
   };
 
@@ -82,35 +82,7 @@ const Login = () => {
                 <span className="text-red-500">{errors.email.message}</span>
               )}
 
-              <input
-                autoComplete="password"
-                type="password"
-                placeholder="Password"
-                className="input input-bordered input-accent   mt-3 inputs"
-                {...register('password', {
-                  required: {
-                    value: true,
-                    message: 'Password is required',
-                  },
-                  minLength: {
-                    value: 6,
-                    message: 'Minimum 6 Characters',
-                  },
-                })}
-              />
-              {errors.password?.type === 'required' && (
-                <span className="text-red-500">{errors.password.message}</span>
-              )}
-              {errors.password?.type === 'minLength' && (
-                <span className="text-red-500">{errors.password.message}</span>
-              )}
-
-              <Link
-                to="/forgot-password"
-                className="text-left hover:text-cyan-500"
-              >
-                Forgot Password?
-              </Link>
+              
 
               {signInError}
               <input
@@ -148,4 +120,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgorPassword;
