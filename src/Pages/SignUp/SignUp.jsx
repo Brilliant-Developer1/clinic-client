@@ -46,15 +46,15 @@ const SignUp = () => {
     );
   }
 
-  if (user || googleUser) {
+  /* if (user || googleUser) {
     console.log(user || googleUser);
-  }
+  } */
 
   const onSubmit = async data => {
     console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name })
-    console.log("Update done");
+    //console.log("Update done");
     navigate('/appointments')
   };
   return (
@@ -124,12 +124,12 @@ const SignUp = () => {
                 <span className="text-red-500">{errors.password.message}</span>
               )}
 
-              <a
-                href="http://localhost:3000/login"
+              <Link
+                to="/forgot-password"
                 className="text-left hover:text-cyan-500"
               >
                 Forgot Password?
-              </a>
+              </Link>
 
               {signInError}
               <input

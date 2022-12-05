@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import googleIcon from '../../assets/icons/google.png';
 import {
   useSignInWithGoogle,
-  useSignInWithEmailAndPassword,
+  useSendPasswordResetEmail ,
 } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
@@ -13,8 +13,8 @@ const ForgorPassword = () => {
     const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, error] =
+  useSendPasswordResetEmail (auth);
     // collected the location data from RequireAuth then redirect the user where he came from.
     const navigate = useNavigate();
     const location = useLocation();
@@ -26,22 +26,23 @@ const ForgorPassword = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = data => {
+  const onSubmit = async data => {
     
-    signInWithEmailAndPassword(data.email);
-    
+   await sendPasswordResetEmail(data.email);
+    alert('Please check your inbox for Password Reset Email');
+    navigate('/login');
   };
 
   let signInError;
 
   React.useEffect(() => {
-    if (user || googleUser) {
+    if ( googleUser) {
       navigate(from, { replace: true });
     }
-  }, [user, googleUser, navigate, from])
+  }, [googleUser, navigate, from])
   
 
-  if (loading || googleLoading) {
+  if (sending || googleLoading) {
     return <Loading />;
   }
 
@@ -58,7 +59,7 @@ const ForgorPassword = () => {
       <div className="flex items-center justify-center mt-28 lg:mt-36">
         <div className="card  bg-base-100 shadow-xl">
           <div className="flex flex-col w-full  p-5">
-            <h1 className="text-2xl text-center">Login</h1>
+            <h1 className="text-2xl text-center">Change your Password</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
               <input
                 {...register('email', {
@@ -87,7 +88,7 @@ const ForgorPassword = () => {
               {signInError}
               <input
                 type="submit"
-                value="LOGIN"
+                value="Reset Password"
                 className="btn w-full border-none bg-gray-600 text-base-100  hover:bg-gray-500 shadow-lg hover:shadow-md mt-8 mb-5
 "
               />
