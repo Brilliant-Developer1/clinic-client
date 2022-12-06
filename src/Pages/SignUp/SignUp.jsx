@@ -5,22 +5,30 @@ import {
   useSignInWithGoogle,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
+  useSendEmailVerification,
+  useAuthState,
 } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../Components/Loading/Loading';
+import { signOut } from 'firebase/auth';
+import './SignUp.css'
 
 const SignUp = () => {
 
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+  const [signInWithGoogle, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
     const [
       createUserWithEmailAndPassword,
-      user,
       loading,
       error,
     ] = useCreateUserWithEmailAndPassword(auth);
+
+    const [user] = useAuthState(auth);
+    const [sendEmailVerification, sending, verificationError] = useSendEmailVerification(
+      auth
+    );
 
     // Insert User Name in Data
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -36,29 +44,29 @@ const SignUp = () => {
 
   let signInError;
 
-  if (loading || googleLoading || updating) {
+  if (loading || googleLoading || updating || sending) {
     return <Loading />;
   }
 
-  if (error || googleError || updateError) {
+  if (error || googleError || updateError || verificationError) {
     signInError = (
-      <p className="text-red-500">{error?.message || googleError?.message || updateError?.message}</p>
+      <p className="text-red-500">{error?.message || googleError?.message || updateError?.message || verificationError?.message}</p>
     );
   }
-
-  /* if (user || googleUser) {
-    console.log(user || googleUser);
+ /*  if (!user?.emailVerified){
+    signOut(auth);
   } */
 
   const onSubmit = async data => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name })
-    //console.log("Update done");
-    navigate('/appointments')
+    await sendEmailVerification(data.email);
+    //console.log(data);
+    alert('Please verify your Email to activate your account');
+    navigate('/login')
   };
   return (
-    <div className=" container mx-auto">
+    <div className=" container mx-auto signup-background-style">
       <div className="flex items-center justify-center mt-28 lg:mt-36">
         <div className="card  bg-base-100 shadow-xl">
           <div className="flex flex-col w-full  p-5">

@@ -18,6 +18,10 @@ const Navbar = () => {
             alert('You are sign out');
           }
   }
+/*   if(!user?.emailVerified){
+    //alert('Please Verify your Email First')
+    signOut(auth)
+  } */
   
   const menuItems = (
     <>

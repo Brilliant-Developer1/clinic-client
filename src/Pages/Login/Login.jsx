@@ -4,10 +4,13 @@ import googleIcon from '../../assets/icons/google.png';
 import {
   useSignInWithGoogle,
   useSignInWithEmailAndPassword,
+  useAuthState,
 } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../Components/Loading/Loading';
+import { signOut } from 'firebase/auth';
+import './Login.css'
 
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -20,6 +23,9 @@ const Login = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/"; // if user came from home page back to there
 
+    const [currentUser] = useAuthState(auth);
+    
+    
     //to collect data from form name, email, password etc.
   const {
     register,
@@ -27,19 +33,25 @@ const Login = () => {
     handleSubmit,
   } = useForm();
   const onSubmit = data => {
-    
-    signInWithEmailAndPassword(data.email, data.password);
-    
-  };
+    //console.log(currentUser?.emailVerified);
+   
+      signInWithEmailAndPassword(data.email, data.password);
 
+  };
+ 
   let signInError;
+  let verifiedEmail;
+// const verifiedEmail = useRef();
+  
 
   React.useEffect(() => {
+    
     if (user || googleUser) {
+      
       navigate(from, { replace: true });
     }
+
   }, [user, googleUser, navigate, from])
-  
 
   if (loading || googleLoading) {
     return <Loading />;
@@ -50,11 +62,8 @@ const Login = () => {
       <p className="text-red-500">{error?.message || googleError?.message}</p>
     );
   }
-
-  
-
   return (
-    <div className=" container mx-auto">
+    <div className=" container mx-auto login-background-style">
       <div className="flex items-center justify-center mt-28 lg:mt-36">
         <div className="card  bg-base-100 shadow-xl">
           <div className="flex flex-col w-full  p-5">
@@ -112,7 +121,7 @@ const Login = () => {
                 Forgot Password?
               </Link>
 
-              {signInError}
+              {signInError || verifiedEmail}
               <input
                 type="submit"
                 value="LOGIN"
